@@ -1,0 +1,10 @@
+
+<header class="topbar">
+    <div class="welcome">
+        Welcome to my website
+    </div>
+    <nav>
+        <c:url var="logoutUrl" value="/logout"/>
+        <a href="logout">Logout</a>
+    </nav>
+</header>
