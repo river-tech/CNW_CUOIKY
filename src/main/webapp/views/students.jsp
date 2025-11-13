@@ -10,7 +10,7 @@
 <jsp:include page="fragments/header.jspf"/>
 <c:url var="studentsUrl" value="/students"/>
 <main class="grid">
-    <section class="card">
+    <!-- <section class="card">
         <h2>Tìm kiếm sinh viên</h2>
         <form class="inline-form" method="get" action="${studentsUrl}">
             <div class="form-field">
@@ -23,7 +23,7 @@
             </div>
             <button type="submit">Tìm</button>
         </form>
-    </section>
+    </section> -->
     <section class="card wide">
         <div class="list-header">
             <h2>Danh sách sinh viên</h2>
@@ -36,6 +36,7 @@
                     </div>
                 </form>
             </div>
+            <button onclick="window.location.href='add'">Thêm sinh viên</button>
         </div>
         <table>
             <thead>

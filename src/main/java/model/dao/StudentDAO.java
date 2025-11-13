@@ -55,6 +55,20 @@ public class StudentDAO {
         return list;
     }
 
+    public boolean existsByMasv(String masv) {
+        String sql = "SELECT 1 FROM students WHERE masv = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, masv);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean insert(StudentBean student) {
         String sql = "INSERT INTO students (masv, hoten, gioitinh, khoa) VALUES (?, ?, ?, ?)";
         try (Connection con = DBConnection.getConnection();

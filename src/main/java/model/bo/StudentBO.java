@@ -22,6 +22,10 @@ public class StudentBO {
         return studentDAO.insert(student);
     }
 
+    public boolean existsByMasv(String masv) {
+        return studentDAO.existsByMasv(masv);
+    }
+
     public StudentBean get(int id) {
         return studentDAO.findById(id);
     }

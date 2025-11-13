@@ -38,7 +38,19 @@ public class StudentController extends HttpServlet {
             student.setHoten(request.getParameter("hoten"));
             student.setGioitinh(request.getParameter("gioitinh"));
             student.setKhoa(request.getParameter("khoa"));
-            studentBO.add(student);
+            if (studentBO.existsByMasv(student.getMasv())) {
+                request.setAttribute("error", "Mã sinh viên đã tồn tại.");
+                request.setAttribute("studentForm", student);
+                request.getRequestDispatcher("views/add.jsp").forward(request, response);
+                return;
+            }
+            boolean created = studentBO.add(student);
+            if (!created) {
+                request.setAttribute("error", "Không thể tạo sinh viên. Thử lại sau.");
+                request.setAttribute("studentForm", student);
+                request.getRequestDispatcher("views/add.jsp").forward(request, response);
+                return;
+            }
         } else if ("update".equals(action)) {
             StudentBean student = new StudentBean();
             student.setId(Integer.parseInt(request.getParameter("id")));
